@@ -1,0 +1,222 @@
+#include<stdio.h>
+#include<math.h>
+int Lcm(int l1, int l2)
+{
+    int Lcm;
+    int n1 = l1, n2 = l2;
+    Lcm = (n1 > n2) ? n1 : n2;
+    while(1)
+    {
+       if( Lcm % n1 == 0 && Lcm % n2 == 0 )
+       {
+            return Lcm;
+       }
+       ++Lcm;
+    }
+}
+int gcd(int a,int b){
+    if(b==0) return a;    return gcd(b,a%b);
+    }
+int lcm(int a,int b){
+    return (a/gcd(a,b)*b);
+    }
+int Hcf(int n, int m) {
+   int a, b, i, hcf;
+
+   a = n;
+   b = m;
+
+   for(i = 1; i <= a || i <= b; i++) {
+   if( a%i == 0 && b%i == 0 )
+      hcf = i;
+   }
+   return hcf;
+}
+int main()
+{
+	  float l=1,m=1,n=1,o=1;
+	    int a=0,b=0,c=0;
+	    int d=0,e=0,f=0;
+    char ch;
+    int x_,y_,p_,q_;
+    int a_,b_;
+    int b1,b2,b3;
+    char C1[10],C2[10],C3[10],C4[10];
+    int choice;
+printf("          WELCOME!! TO THE WORLD OF ELEMENTS          ");
+printf("\n   ------------------------------------------------   ");
+printf("\n  HERE WE ARE,WITH THE CONCEPT OF BALANCING EQUATION  ");
+printf("\n           BALANCING OF CHEMICAL EQUATION      ");
+    printf("\n  Did You Wish To Check Your Chemical Equation(Y/N) \n");
+    scanf(" %c",&ch);
+    if(ch=='Y' || ch=='y')
+    {
+      do
+        {
+           printf("   1. ADDITIVE REACTION \n   2. DECOMPOSITION REACTION \n   3. COMBUSTION REACTION \n   4. SINGLE REPLACEMENT REACTION \n   5. DOUBLE REPLACEMENT REACTION \n");
+           scanf("%d",&choice);
+           switch(choice)
+           {
+               case 1: printf(" -----------ADDITIVE REACTION----------- \n");
+                       printf(" C1e + C2f -----> C1gC2h \n");
+                       printf("ENTER THE ELEMENTS C1 C2 \n");
+                       scanf(" %s %s",C1,C2);
+                       printf("enter the value of subscript of element e f g h \n");
+                       scanf("%d %d %d %d",&x_,&y_,&p_,&q_);
+                       printf(" UNBALANCED REACTION \n");
+                       printf(" %s%d  + %s%d -----> %s%d%s%d \n",C1,x_,C2,y_,C1,p_,C2,q_);
+                       a_=lcm(x_,y_);
+                       b1=(a_*p_)/x_;
+                       b2=(a_*q_)/y_;
+                       b3=a_;
+                       b_=gcd(b1,b2);
+                       b_=gcd(b_,b3);
+                       printf(" BALANCED REACTION \n");
+                       printf(" (%d)%s%d + (%d)%s%d -----> (%d)%s%d%s%d",(b1/b_),C1,x_,(b2/b_),C2,y_,(b3/b_),C1,p_,C2,q_);
+                        break;
+               case 2: printf(" ---------DECOMPOSITION REACTION--------- \n");
+                           printf("C1xC2y ----> C1p + C2q  \n");
+                           printf("ENTER THE ELEMENTS C1 C2 \n");
+                           scanf(" %s %s",C1,C2);
+                           printf("enter the value of subscript of element x,y,p,q \n");
+                           scanf("%d %d %d %d",&x_,&y_,&p_,&q_);
+                           printf(" UNBALANCED REACTION \n");
+                           printf(" %s%d%s%d  -----> %s%d + %s%d \n",C1,x_,C2,y_,C1,p_,C2,q_);
+                           a_=lcm(p_,q_);
+                           b1=(a_*x_)/p_;
+                           b2=(a_*y_)/q_;
+                           b3=a_;
+                           b_=gcd(b1,b2);
+                           b_=gcd(b_,b3);
+                           printf(" BALANCED REACTION \n");
+                           printf(" (%d)%s%d%s%d -----> (%d)%s%d + (%d)%s%d",(b1/b_),C1,x_,C2,y_,(b3/b_),C1,p_,(b2/b_),C2,q_);
+
+
+                        break;
+              case 3: printf(" ----------COMBUSTION REACTION----------\n");
+                       int d1,d2;
+                       float a1;
+                       double z1;
+                         printf("\nEnter number of carbon and hydrogen atoms in the molecule\n");
+                         scanf("%d %d",&d1,&d2);
+                         if((d2%d1==0 || d2%d1==2)  && d2!=(2*d1)-2 )
+                         {
+                            printf("\nCompound is valid");
+                            printf("\nProcess can be carried out further");
+                         }
+                          else
+                          {
+                             printf("\nEither your compound is Alkyne or enter valid compound");
+                          }
+                          a1=4*d1+d2;
+                          z1=(a1/4);
+                          printf("\nUnbalanced Reaction is:\n");
+                          printf("C%dH%d + O2< -----> CO2 + H2O",d1,d2);
+                          printf("\nBalanced Reaction is:\n");
+                          printf("C%dH%d + %0.1fO2 -----> %dCO2 + %dH2O", d1,d2,z1,d1,(d2/2));
+                          break;
+               case 4: printf(" ------SINGLE REPLACEMENT REACTION------\n");
+
+                         printf("\nENTER THE REACTION IN THE FORM\n");
+                         printf("PaQb  +  Rc  =  RdQe  +  Pf\n");
+	                     printf("ENTER P,Q,R\n");
+                         char p[5],q[5],r[5];
+                         scanf(" %s %s %s",p,q,r);
+                        
+                         printf("ENTER a,b,c\n");
+	                     scanf("%d %d %d",&a,&b,&c);
+	                
+	                     printf("ENTER d,e,f\n");
+	                     scanf("%d %d %d",&d,&e,&f);
+                         printf("     THE UNBALANCED EQUATION IS\n");
+	                     printf("    %s%d%s%d + %s%d -----> %s%d%s%d + %s%d",p,a,q,b,r,c,r,d,q,e,p,f);
+                
+	                     float t1,t2,t3,t4,t5;
+	                     t1=Lcm(b,e);
+	                     t2=Lcm(c,d);
+	                     t3=Lcm(a,f);
+	                 	 if(b>e)
+		                 n=t1;
+                         if(e>b)
+                         l=t1;
+	                     if(c>d)
+                         n=t2;
+	                     if(d>c)
+		                 m=t2;
+                         if(a>f)
+                         o=t3;
+	                     if(f>a)
+		                 l=t3;
+	                     if(l!=o && l!=f)
+	                     {
+		                   t4=Lcm(l,o);
+                           l=t4;
+                           o=t4;
+                       	 }
+	                     if(m!=n && m!=d)
+	                      {
+		                    t5=Lcm(m,n);
+                            m=t5;
+		                    n=t5;
+	                     }
+	                     printf("\n  --------------------------------------------  ");
+	                  	 printf("\n     THE BALANCED EQUATION IS     \n");
+                         printf("    %.0f%s%d%s%d + %.0f%s%d -----> %.0f%s%d%s%d + %.0f%s%d",l,p,a,q,b,m,r,c,n,r,d,q,e,o,p,f);
+                         break;
+               case 5: printf(" ------DOUBLE REPLACEMENT REACTION------\n");
+                        char E1[5],E2[5],E3[5],E4[5];
+                        char E5[5],E6[5],E7[5],E8[5];
+                        double x1,x2,x3,x4;
+                        int x,y,z,w,p1,q1,r1,s1,R1,R2,R3,R4,R5,R6;
+                        int V1,V2,V3,V4;
+                        printf("\n                E1xE2y + E3zE4w ---> E1pE4q + E3rE2s            ");
+                        printf("\n   -------------------------------------------------------------------------");
+                        printf("\n Enter The REACTANTS In The Following format: ");
+                        printf(" \n E1xE2y + E3zE4w ---> ");
+                        printf("\n Enter The Elements E1,E2,E3,E4 \n");
+                        scanf("%s %s %s %s",E1,E2,E3,E4);
+                        printf("Enter The Elements x,y,z,w \n");
+                        scanf("%d %d %d %d",&x,&y,&z,&w);
+                        printf("Enter The Valances of Elements E1,E2,E3,E4 \n");
+                        scanf("%d %d %d %d",&V1,&V2,&V3,&V4);
+                        printf("\n Enter The PRODUCTS In The Following format: ");
+                        printf(" \n E1pE4q + E3rE2s ");
+                        printf("\n Enter The Elements E1,E4,E3,E2 \n");
+                        scanf("%s %s %s %s",E5,E6,E7,E8);
+                        printf("Enter The Elements p,q,r,s \n");
+                        scanf("%d %d %d %d",&p1,&q1,&r1,&s1);
+                        printf("\n   ------------------------- UNBALANCED EQUATION --------------------------- \n");
+                        printf("       %s%d%s%d + %s%d%s%d ------> %s%d%s%d + %s%d%s%d  ",E1,x,E2,y,E3,z,E4,w,E5,p1,E6,q1,E7,r1,E8,s1);
+                        R1=Lcm(x,p1);
+                        R2=Lcm(q1,w);
+                        R3=Lcm(R1,R2);
+                        x3=R3/(q1*V4);
+                        x2=R3/(w*V4);
+                        R1=Lcm(z,r1);
+                        R2=Lcm(y,s1);
+                        R3=Lcm(R1,R2);
+                        x4=R3/(s1*V2);
+                        x1=R3/(y*V2);
+                        R4=Hcf(x1,x2);
+                        R5=Hcf(x3,x4);
+                        R6=Hcf(R4,R5);
+                        x1=x1/R6;
+                        x2=x2/R6;
+                        x3=x3/R6;
+                        x4=x4/R6;
+                        printf("\n   -------------------------- BALANCED EQUATION ---------------------------- \n");
+                        printf("     [%0.1f]%s%d%s%d + [%0.1f]%s%d%s%d ------> [%0.1f]%s%d%s%d + [%0.1f]%s%d%s%d  ",round(x1),E1,x,E2,y,round(x2), E3,z,E4,w,round(x3),E5,p1,E6,q1,round(x4), E7,r1,E8,s1);
+                        break;
+
+           }
+           printf("\n\n Do You Want To Continue(Y/N) \n");
+           scanf(" %c",&c);
+         }while(c=='Y' || c=='y');
+
+    }
+    else
+    {
+       printf("         THANKYOU!! FOR VISITING      ");
+    }
+return 0;
+}
